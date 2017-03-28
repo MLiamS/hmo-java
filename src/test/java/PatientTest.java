@@ -30,4 +30,18 @@ public class PatientTest {
     assertEquals("1986-08-18", patient.getBirthday());
     assertEquals(1, patient.getDoctorId());
   }
+
+  @Test
+  public void save_returnsPatientIfNamesMatch_true() { // must make all() method save() method, and Override .equals method
+    Patient patient = new Patient("Bub", "1986-08-18", 1);
+    patient.save();
+    assertTrue(Patient.all().get(0).equals(patient));
+  }
+
+  @Test
+  public void getId_tasksInstantiateWithAnId() {
+    Patient pat = new Patient("Bub", "1986-08-18", 1);
+    pat.save();
+    assertTrue(pat.getId() > 0);
+  }
 }
