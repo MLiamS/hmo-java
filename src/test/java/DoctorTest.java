@@ -54,4 +54,13 @@ public class DoctorTest {
     Doctor alsoDoc = Doctor.all().get(0);
     assertEquals(doc.getId(), alsoDoc.getId());
   }
+
+  @Test
+  public void find_returnsDoctorById_doc2() {
+    Doctor doc1 = new Doctor("Doc", 1);
+    doc1.save();
+    Doctor doc2 = new Doctor("Cod", 1);
+    doc2.save();
+    assertEquals(Doctor.find(doc2.getId()), doc2);
+  }
 }
