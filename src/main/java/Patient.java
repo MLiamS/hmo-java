@@ -12,4 +12,15 @@ public class Patient {
     this.doctorId = doctorId;
   }
 
+  public String getName() {
+    return this.name;
+  }
+
+  public String getBirthday() {
+    return this.birthday;
+  }
+
+  public int getDoctorId() {
+    return doctorId;
+  }
 }

@@ -18,8 +18,16 @@ public class PatientTest {
   }
 
   @Test
-  public void patient_instantiates_true() {
+  public void Patient_instantiates_true() {
     Patient patient = new Patient("Bub", "1986-08-18", 1);
     assertEquals(true, patient instanceof Patient);
+  }
+
+  @Test
+  public void Patient_gettersWork_true() {
+    Patient patient = new Patient("Bub", "1986-08-18", 1);
+    assertEquals("Bub", patient.getName());
+    assertEquals("1986-08-18", patient.getBirthday());
+    assertEquals(1, patient.getDoctorId());
   }
 }
