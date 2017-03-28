@@ -36,4 +36,14 @@ public class DoctorTest {
     myDoctor.save();
     assertTrue(Doctor.all().get(0).equals(myDoctor));
   }
+
+  @Test
+  public void all_returnsAllInstancesOfDoctor_true() {
+    Doctor doc1 = new Doctor("Doc", 1);
+    doc1.save();
+    Doctor doc2 = new Doctor("Cod", 1);
+    doc2.save();
+    assertEquals(true, Doctor.all().get(0).equals(doc1));
+    assertEquals(true, Doctor.all().get(1).equals(doc2));
+  }
 }
