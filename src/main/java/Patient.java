@@ -7,10 +7,9 @@ public class Patient {
   private int doctorId;
   private int id;
 
-  public Patient(String name, String birthday, int doctorId ) {
+  public Patient(String name, String birthday) {
     this.name = name;
     this.birthday = birthday;
-    this.doctorId = doctorId;
   }
 
   @Override
@@ -39,13 +38,16 @@ public class Patient {
     return this.id;
   }
 
+  public void setDoctorId(int id) {
+    this.doctorId = id;
+  }
+
   public void save()  {
     try(Connection con =  DB.sql2o.open()) {
-      String sql = "INSERT INTO patients (name, birthday, doctor_id) VALUES (:name, :birthday, :doctor_id)";
+      String sql = "INSERT INTO patients (name, birthday) VALUES (:name, :birthday)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("birthday", this.birthday)
-        .addParameter("doctor_id", this.doctorId)
         .executeUpdate().getKey();
     }
   }
