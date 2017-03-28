@@ -22,4 +22,11 @@ public class DoctorTest {
     Doctor doctor = new Doctor("Doc", 1);
     assertEquals(true, doctor instanceof Doctor);
   }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreSame() {
+    Doctor doctor = new Doctor("Doc", 1);
+    Doctor doctor2 = new Doctor("Doc", 1);
+    assertTrue(doctor.equals(doctor2));
+  }
 }
