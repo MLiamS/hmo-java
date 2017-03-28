@@ -46,4 +46,12 @@ public class DoctorTest {
     assertEquals(true, Doctor.all().get(0).equals(doc1));
     assertEquals(true, Doctor.all().get(1).equals(doc2));
   }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Doctor doc = new Doctor("Doc", 1);
+    doc.save();
+    Doctor alsoDoc = Doctor.all().get(0);
+    assertEquals(doc.getId(), alsoDoc.getId());
+  }
 }
