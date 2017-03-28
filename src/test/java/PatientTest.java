@@ -44,4 +44,13 @@ public class PatientTest {
     pat.save();
     assertTrue(pat.getId() > 0);
   }
+
+  @Test
+  public void find_returnsPatientById_pat2() {
+    Patient pat = new Patient("Bub", "1986-08-18", 1);
+    pat.save();
+    Patient pat2 = new Patient("Blah", "1986-08-14", 1);
+    pat2.save();
+    assertEquals(Patient.find(pat2.getId()), pat2);
+  }
 }
