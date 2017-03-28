@@ -1,3 +1,4 @@
+import java.util.List;
 import org.sql2o.*;
 
 public class Doctor {
@@ -26,5 +27,27 @@ public class Doctor {
 
   public int getId() {
     return this.id;
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO doctors (name, speciality_id) VALUES (:name, :spec)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("spec", this.specialityId)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+
+
+  public static List<Doctor> all() {
+    String sql = "SELECT * FROM doctors";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+      .addColumnMapping("speciality_id", "specialityId")
+      .executeAndFetch(Doctor.class);
+    }
   }
 }

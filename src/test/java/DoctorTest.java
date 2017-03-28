@@ -29,4 +29,11 @@ public class DoctorTest {
     Doctor doctor2 = new Doctor("Doc", 1);
     assertTrue(doctor.equals(doctor2));
   }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Doctor myDoctor = new Doctor("Doc", 1);
+    myDoctor.save();
+    assertTrue(Doctor.all().get(0).equals(myDoctor));
+  }
 }
